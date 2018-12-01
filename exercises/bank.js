@@ -1,23 +1,35 @@
 
 
 class Bank{
-	constructor(){
+	constructor( name ){
 		//takes in the name of the bank.
 		//makes an object to store all accounts into
+		this.name = name;
+		this.allAccounts = {};
 	}
-	makeAccount( ){
+	makeAccount( accountNumber ){
 		//makes an account
 		//takes in the account number of an account
 		//checks if the account number already exists in the account storage object in the constructor
 			//if already exists, returns fals
 		//otherwise makes an new Account object
 		//returns the Account object that was constructed
+		if (this.checkForAccount(accountNumber) == false){
+			return false
+		} 
+		return {};
 	}
-	checkForAccount(  ){
+	checkForAccount( accountNumber ){
 		//checks if an account exists or not
 		//takes in the account number of an account
 		//returns false if the account does not exist in the accounts object from the constructor
 		//returns true if the account does exist
+		for (var key in this.allAccounts){
+			if (key == accountNumber){
+				return true;
+			}
+		}
+		return false;
 	}
 	removeAccount(  ){
 		//removes an account
