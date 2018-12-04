@@ -14,24 +14,23 @@ class Bank{
 			//if already exists, returns fals
 		//otherwise makes an new Account object
 		//returns the Account object that was constructed
-		if (this.checkForAccount(accountNumber) == false){
-			return false
+		if (this.checkForAccount(accountNumber) == true){
+			return false;
 		} 
-		return {};
+		this.allAccounts[accountNumber] =  new Account();
+		return this.allAccounts[accountNumber]
 	}
 	checkForAccount( accountNumber ){
 		//checks if an account exists or not
 		//takes in the account number of an account
 		//returns false if the account does not exist in the accounts object from the constructor
 		//returns true if the account does exist
-		for (var key in this.allAccounts){
-			if (key == accountNumber){
-				return true;
-			}
+		if (this.allAccounts[accountNumber]){
+			return true;
 		}
 		return false;
 	}
-	removeAccount(  ){
+	removeAccount( accountNumber ){
 		//removes an account
 		//takes in an account number
 		//if the account doesn't exist, returns
@@ -40,7 +39,14 @@ class Bank{
 			//'account is not empty'
 		//otherwise deletes the account from the constructor storage
 		//returns 
-			'account <accountNumber> deleted'
+			//'account <accountNumber> deleted'
+		if (this.checkForAccount(accountNumber) == false){
+			return `${accountNumber} does not exist`;
+		} else if ( accountNumber > 0 ) {
+			return `${accountNumber} is not empty`;
+		} else {
+			
+		}
 
 	}
 	deposit( ){
